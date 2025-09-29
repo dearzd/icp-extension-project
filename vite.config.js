@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react(),
-    vitePlugin(),
+    // vitePlugin(),
     //
   ],
   server: {
