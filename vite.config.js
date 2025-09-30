@@ -7,11 +7,27 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react(),
-    // vitePlugin(),
+    vitePlugin(),
     //
   ],
+  // base: '/extension',
   server: {
     cors: true,
+    headers: {
+      // 'Cross-Origin-Resource-Policy': 'cross-origin',
+      // 'Cross-Origin-Embedder-Policy': 'require-corp',
+      // 'X-Custom-Header': 'MyValue',
+    },
+    proxy: {
+      '/ui': {
+        target: 'http://localhost:8080/',
+        changeOrigin: true,
+      },
+      '^(\/[^/]+\/api\/).*': {
+        target: 'http://localhost:8080/',
+        changeOrigin: true,
+      }
+    }
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
