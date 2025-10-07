@@ -10,22 +10,17 @@ export default defineConfig({
     vitePlugin(),
     //
   ],
-  // base: '/extension',
   server: {
     cors: true,
-    headers: {
-      // 'Cross-Origin-Resource-Policy': 'cross-origin',
-      // 'Cross-Origin-Embedder-Policy': 'require-corp',
-      // 'X-Custom-Header': 'MyValue',
-    },
+    open: '/ui',
     proxy: {
-      '/ui': {
-        target: 'http://localhost:8080/',
+      '^((\/ui)|(\/[^/]+\/api\/)).*': {
+        target: 'https://192.168.1.101:8080/',
         changeOrigin: true,
-      },
-      '^(\/[^/]+\/api\/).*': {
-        target: 'http://localhost:8080/',
-        changeOrigin: true,
+        secure: false,
+        headers: {
+          'x-ui-url': 'your proxy url',
+        },
       }
     }
   },
