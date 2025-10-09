@@ -8,7 +8,7 @@ export default function mount<T>(
   { params, formApi, messageApi, restApi, i18nApi, routerApi }: MountParams<T>,
 ): MountReturn<T> {
   const root = createRoot(element);
-  root.render(<App restApi={restApi} />)
+  root.render(<App />)
 
   return () => {
     root.unmount();

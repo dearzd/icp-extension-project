@@ -3,15 +3,8 @@ import viteLogo from './vite.svg';
 import reactLogo from './react.svg';
 import './App.css';
 
-function App({ restApi }) {
+function App() {
   const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    restApi.get('/form/api/v2/form-entity-data/workflow-type-demo/business-form/list')
-      .then((res) => {
-        console.log(res);
-      });
-  }, []);
 
   return (
     <div className="flex flex-col items-center gap-4">
