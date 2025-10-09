@@ -15,14 +15,14 @@ export default defineConfig({
     open: '/ui',
     proxy: {
       '^((\/ui)|(\/[^/]+\/api\/)).*': {
-        target: 'https://192.168.1.101:8080/',
+        target: 'your proxy url',
         changeOrigin: true,
         secure: false,
         headers: {
-          'x-ui-url': 'your proxy url',
+          'x-ui-url': 'your trial run url',
         },
-      }
-    }
+      },
+    },
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
